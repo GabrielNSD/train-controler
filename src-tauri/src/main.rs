@@ -168,16 +168,6 @@ impl Train {
             self.position = current_track.end;
             new_position = self.position;
 
-            // unlock own mutex if exists
-            if current_track.mutex.is_some() {
-                let current_track_mutex = current_track.mutex.as_ref().unwrap();
-                let mut locked = current_track_mutex.lock().unwrap();
-
-                if *locked == self.id as i32 {
-                    *locked = 100;
-                }
-            }
-
             // check if the next track has a mutex
             let next_track = self.track_loop.get_next_track(current_track.id);
             if next_track.mutex.is_some() {
@@ -222,10 +212,28 @@ impl Train {
                     }
 
                     self.position = next_track.start;
+                    // unlock own mutex if exists
+                    if current_track.mutex.is_some() {
+                        let current_track_mutex = current_track.mutex.as_ref().unwrap();
+                        let mut locked = current_track_mutex.lock().unwrap();
+
+                        if *locked == self.id as i32 {
+                            *locked = 100;
+                        }
+                    }
 
                     self.current_track = next_track.id;
                 }
             } else {
+                // unlock own mutex if exists
+                if current_track.mutex.is_some() {
+                    let current_track_mutex = current_track.mutex.as_ref().unwrap();
+                    let mut locked = current_track_mutex.lock().unwrap();
+
+                    if *locked == self.id as i32 {
+                        *locked = 100;
+                    }
+                }
                 // set current track to next track
                 self.current_track = next_track.id;
                 let is_vertical = self.is_vertical(self.current_track as usize);
