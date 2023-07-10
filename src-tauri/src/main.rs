@@ -303,8 +303,7 @@ fn main() {
 
             // sleep for 1 sec
             thread::sleep(std::time::Duration::from_secs(1));
-            //println!("SPEED {:?}", speeds[0]);
-            train_0.move_train(speeds[0] * 5);
+            train_0.move_train(speeds[0]);
         }
     });
 
@@ -325,8 +324,7 @@ fn main() {
             // sleep for 1 sec
             thread::sleep(std::time::Duration::from_secs(1));
 
-            //println!("SPEED {:?}", speeds[1]);
-            train_1.move_train(speeds[1] * 5);
+            train_1.move_train(speeds[1]);
         }
     });
 
@@ -347,7 +345,7 @@ fn main() {
             // sleep for 1 sec
             thread::sleep(std::time::Duration::from_secs(1));
 
-            train_2.move_train(speeds[2] * 5);
+            train_2.move_train(speeds[2]);
         }
     });
 
@@ -368,7 +366,7 @@ fn main() {
             // sleep for 1 sec
             thread::sleep(std::time::Duration::from_secs(1));
 
-            train_3.move_train(speeds[3] * 5);
+            train_3.move_train(speeds[3]);
         }
     });
 

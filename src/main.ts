@@ -19,7 +19,6 @@ async function render() {
 }
 
 async function setTrainSpeed(trainId: number, speed: number) {
-  console.log("setTrainSpeed", trainId, speed);
   await invoke("set_train_speed", { trainId, speed });
 }
 
@@ -32,23 +31,19 @@ window.addEventListener("DOMContentLoaded", () => {
   speedAdujuster4 = document.querySelector("#speedAdujuster4");
 
   speedAdujuster1?.addEventListener("input", () => {
-    console.log("speedAdujuster1", speedAdujuster1?.value);
-    setTrainSpeed(0, parseInt(speedAdujuster1?.value || "0"));
+    setTrainSpeed(0, parseInt(speedAdujuster1?.value || "0") * 5);
   });
 
   speedAdujuster2?.addEventListener("input", () => {
-    console.log("speedAdujuster2", speedAdujuster2?.value);
-    setTrainSpeed(1, parseInt(speedAdujuster2?.value || "0"));
+    setTrainSpeed(1, parseInt(speedAdujuster2?.value || "0") * 5);
   });
 
   speedAdujuster3?.addEventListener("input", () => {
-    console.log("speedAdujuster3", speedAdujuster3?.value);
-    setTrainSpeed(2, parseInt(speedAdujuster3?.value || "0"));
+    setTrainSpeed(2, parseInt(speedAdujuster3?.value || "0") * 5);
   });
 
   speedAdujuster4?.addEventListener("input", () => {
-    console.log("speedAdujuster4", speedAdujuster4?.value);
-    setTrainSpeed(3, parseInt(speedAdujuster4?.value || "0"));
+    setTrainSpeed(3, parseInt(speedAdujuster4?.value || "0") * 5);
   });
 
   render();

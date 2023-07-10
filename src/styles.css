@@ -21,6 +21,13 @@
   justify-content: center;
 }
 
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .slider {
   -webkit-appearance: slider-vertical;
   writing-mode: bt-lr; /* Deprecated, use `sideways-rl` for modern browsers */
